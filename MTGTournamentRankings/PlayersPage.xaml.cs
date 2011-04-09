@@ -21,7 +21,7 @@ namespace MTGTournamentRankings
             InitializeComponent();
 
             // Set the data context of the listbox control to the sample data
-            DataContext = App.ViewModel;
+            DataContext = App.PlayersViewModel;
             this.Loaded += new RoutedEventHandler(MainPage_Loaded);
         }
 
@@ -39,12 +39,12 @@ namespace MTGTournamentRankings
             MainListBox.SelectedIndex = -1;
         }
 
-        // Load data for the ViewModel Items
+        // Load data for the PlayersViewModel Items
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            if (!App.ViewModel.IsDataLoaded)
+            if (!App.PlayersViewModel.IsDataLoaded)
             {
-                App.ViewModel.LoadData();
+                App.PlayersViewModel.LoadData();
             }
         }
     }
