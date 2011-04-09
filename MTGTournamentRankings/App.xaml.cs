@@ -17,19 +17,19 @@ namespace MTGTournamentRankings
 {
     public partial class App : Application
     {
-        private static MainViewModel viewModel = null;
+        private static PlayersViewModel viewModel = null;
 
         /// <summary>
         /// A static ViewModel used by the views to bind against.
         /// </summary>
-        /// <returns>The MainViewModel object.</returns>
-        public static MainViewModel ViewModel
+        /// <returns>The PlayersViewModel object.</returns>
+        public static PlayersViewModel PlayersViewModel
         {
             get
             {
                 // Delay creation of the view model until necessary
                 if (viewModel == null)
-                    viewModel = new MainViewModel();
+                    viewModel = new PlayersViewModel();
 
                 return viewModel;
             }
@@ -81,9 +81,9 @@ namespace MTGTournamentRankings
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
             // Ensure that application state is restored appropriately
-            if (!App.ViewModel.IsDataLoaded)
+            if (!App.PlayersViewModel.IsDataLoaded)
             {
-                App.ViewModel.LoadData();
+                App.PlayersViewModel.LoadData();
             }
         }
 
