@@ -19,5 +19,10 @@ namespace MTGTournamentRankings
         {
             InitializeComponent();
         }
+
+        private void MainPagePlayers_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/PlayersPage.xaml", UriKind.Relative));
+        }
     }
 }

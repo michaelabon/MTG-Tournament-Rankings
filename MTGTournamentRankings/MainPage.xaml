@@ -42,7 +42,7 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel>
                 <TextBlock x:Name="MainPageRankings" Style="{StaticResource MainMenuTextStyle}">rankings</TextBlock>
-                <TextBlock x:Name="MainPagePlayers" Style="{StaticResource MainMenuTextStyle}">players</TextBlock>
+                <TextBlock x:Name="MainPagePlayers" Style="{StaticResource MainMenuTextStyle}" MouseLeftButtonUp="MainPagePlayers_MouseLeftButtonUp">players</TextBlock>
             </StackPanel>
         </Grid>
     </Grid>
