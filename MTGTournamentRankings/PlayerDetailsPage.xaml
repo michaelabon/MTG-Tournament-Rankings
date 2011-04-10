@@ -13,6 +13,12 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait" 
     shell:SystemTray.IsVisible="True">
+    <phone:PhoneApplicationPage.Resources>
+        <Style x:Key="PlayersDetailTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Margin" Value="0,0,0,0" />
+            <Setter Property="Width" Value="456" />
+        </Style>
+    </phone:PhoneApplicationPage.Resources>
 
     <!--Data context is set to sample data above and first item in sample data collection below and LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent" d:DataContext="{Binding Items[0]}">
@@ -24,25 +30,35 @@
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock x:Name="PageTitle" Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="ListTitle" Text="{Binding LineOne}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock x:Name="ListTitle" Text="edit" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel contains details text. Place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <TextBlock x:Name="ContentText" Text="{Binding LineThree}" TextWrapping="Wrap" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <ListBox>
+                <ListBoxItem>
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource PhoneTextNormalStyle}">Name</TextBlock>
+                        <TextBox Style="{StaticResource PlayersDetailTextBoxStyle}"/>
+                    </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem Margin="0,12,0,0">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource PhoneTextNormalStyle}">Points</TextBlock>
+                        <TextBox Style="{StaticResource PlayersDetailTextBoxStyle}"></TextBox>
+                    </StackPanel>
+                        
+                </ListBoxItem>
+            </ListBox><!--<TextBlock x:Name="ContentText" Text="{Binding LineThree}" TextWrapping="Wrap" Style="{StaticResource PhoneTextNormalStyle}"/>-->
         </Grid>
     </Grid>
  
     <!--Sample code showing usage of ApplicationBar-->
-    <!--<phone:PhoneApplicationPage.ApplicationBar>
+    <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
-                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
-            </shell:ApplicationBar.MenuItems>
+            <shell:ApplicationBarIconButton Text="save" IconUri="/icons/appbar.save.rest.png" IsEnabled="False"/>
+            <shell:ApplicationBarIconButton Text="delete" IconUri="/icons/appbar.delete.rest.png"/>
         </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>-->
+    </phone:PhoneApplicationPage.ApplicationBar>
 
 </phone:PhoneApplicationPage>
