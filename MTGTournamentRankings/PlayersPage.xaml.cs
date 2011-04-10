@@ -33,7 +33,7 @@ namespace MTGTournamentRankings
                 return;
 
             // Navigate to the new page
-            NavigationService.Navigate(new Uri("/DetailsPage.xaml?selectedItem=" + MainListBox.SelectedIndex, UriKind.Relative));
+            NavigationService.Navigate(new Uri("/PlayerDetailsPage.xaml?selectedItem=" + MainListBox.SelectedIndex, UriKind.Relative));
 
             // Reset selected index to -1 (no selection)
             MainListBox.SelectedIndex = -1;
@@ -46,6 +46,11 @@ namespace MTGTournamentRankings
             {
                 App.PlayersViewModel.LoadData();
             }
+        }
+
+        private void ButtonAddPlayer_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/PlayerDetailsPage.xaml", UriKind.Relative));
         }
     }
 }

@@ -5,9 +5,9 @@
     SampleProperty="Sample Text Property Value">
     
     <local:PlayersViewModel.Items>
-        <local:PlayerViewModel LineOne="Ciarán Llachlan" LineTwo="Ranked 1st at 0 points" LineThree="Maecenas praesent accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur"/>
-        <local:PlayerViewModel LineOne="Mike Kenyon" LineTwo="Ranked 2nd at -600 points" LineThree="Pharetra placerat pulvinar sagittis senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent"/>
-        <local:PlayerViewModel LineOne="Ben Jeffery" LineTwo="Ranked 3rd at -11,000,000,000" LineThree="Accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur pharetra placerat"/>
+        <local:PlayerViewModel LineOne="Ciarán Llachlan" LineTwo="0" LineThree="Maecenas praesent accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur"/>
+        <local:PlayerViewModel LineOne="Mike Kenyon" LineTwo="-600" LineThree="Pharetra placerat pulvinar sagittis senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent"/>
+        <local:PlayerViewModel LineOne="Ben Jeffery" LineTwo="-11000000000" LineThree="Accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur pharetra placerat"/>
     </local:PlayersViewModel.Items>
     
 </local:PlayersViewModel>
