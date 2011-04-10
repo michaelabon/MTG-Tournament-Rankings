@@ -7,7 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
-    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768" 
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696" 
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -39,13 +39,19 @@
                 <ListBoxItem>
                     <StackPanel>
                         <TextBlock Style="{StaticResource PhoneTextNormalStyle}">Name</TextBlock>
-                        <TextBox Style="{StaticResource PlayersDetailTextBoxStyle}"/>
+                        <TextBox x:Name="PlayerName" Text="{Binding LineOne}" Style="{StaticResource PlayersDetailTextBoxStyle}" TextChanged="TextBox_TextChanged" />
                     </StackPanel>
                 </ListBoxItem>
                 <ListBoxItem Margin="0,12,0,0">
                     <StackPanel>
                         <TextBlock Style="{StaticResource PhoneTextNormalStyle}">Points</TextBlock>
-                        <TextBox Style="{StaticResource PlayersDetailTextBoxStyle}"></TextBox>
+                        <TextBox x:Name="PlayerScore" Text="{Binding LineTwo}" Style="{StaticResource PlayersDetailTextBoxStyle}" TextChanged="TextBox_TextChanged">
+                            <TextBox.InputScope>
+                                <InputScope>
+                                    <InputScopeName NameValue="Number" />
+                                </InputScope>
+                            </TextBox.InputScope>
+                        </TextBox>
                     </StackPanel>
                         
                 </ListBoxItem>
@@ -56,8 +62,8 @@
     <!--Sample code showing usage of ApplicationBar-->
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton Text="save" IconUri="/icons/appbar.save.rest.png" IsEnabled="False"/>
-            <shell:ApplicationBarIconButton Text="delete" IconUri="/icons/appbar.delete.rest.png"/>
+            <shell:ApplicationBarIconButton x:Name="ButtonSavePlayer" Click="SavePlayer_Click" Text="save" IconUri="/icons/appbar.save.rest.png" IsEnabled="False"/>
+            <shell:ApplicationBarIconButton x:Name="ButtonDeletePlayer" Click="DeletePlayer_Click" Text="delete" IconUri="/icons/appbar.delete.rest.png"/>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 

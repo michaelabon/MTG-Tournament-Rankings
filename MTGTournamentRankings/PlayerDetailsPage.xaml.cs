@@ -11,6 +11,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Shell;
 
 namespace MTGTournamentRankings
 {
@@ -26,10 +27,64 @@ namespace MTGTournamentRankings
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             string selectedIndex = "";
-            if (NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex))
+            if (!NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex)) { return; }
+            int index = int.Parse(selectedIndex);
+            DataContext = App.PlayersViewModel.Items[index];
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (ApplicationBar.Buttons[0] == null) { return; }
+            PlayerViewModel player = DataContext as PlayerViewModel;
+            if (player == null) { return; }
+
+            int testIfNumeric;
+            if (PlayerName.Text == player.LineOne && PlayerScore.Text == player.LineTwo)
             {
-                int index = int.Parse(selectedIndex);
-                DataContext = App.PlayersViewModel.Items[index];
+                ((ApplicationBarIconButton)ApplicationBar.Buttons[0]).IsEnabled = false;
+            }
+            else if (PlayerName.Text == String.Empty || PlayerScore.Text == String.Empty)
+            {
+                ((ApplicationBarIconButton)ApplicationBar.Buttons[0]).IsEnabled = false;
+            }
+            else if (!Int32.TryParse(PlayerScore.Text, out testIfNumeric))
+            {
+                ((ApplicationBarIconButton)ApplicationBar.Buttons[0]).IsEnabled = false;                
+            }
+            else
+            {
+                ((ApplicationBarIconButton)ApplicationBar.Buttons[0]).IsEnabled = true;
+            }
+        }
+
+        private void SavePlayer_Click(object sender, EventArgs e)
+        {
+            PlayerViewModel player = DataContext as PlayerViewModel;
+            if (player == null) { return; }
+
+            player.LineOne = PlayerName.Text;
+            player.LineTwo = PlayerScore.Text;
+        }
+
+        private void DeletePlayer_Click(object sender, EventArgs e)
+        {
+            PlayerViewModel player = DataContext as PlayerViewModel;
+            if (player == null) { return; }
+
+            string msg = String.Format("Are you sure you want to permanently delete {0}?", player.LineOne);
+            const string caption = "Confirm delete?";
+            if (MessageBox.Show(msg, caption, MessageBoxButton.OKCancel) != MessageBoxResult.OK)
+            {
+                return;
+            }
+
+            if (App.PlayersViewModel.Items.Remove(player))
+            {
+                NavigationService.GoBack();
+            }
+            else
+            {
+                // TODO: Handle the inability to delete a player.
             }
         }
     }
