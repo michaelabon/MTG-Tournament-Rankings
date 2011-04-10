@@ -37,7 +37,7 @@ namespace MTGTournamentRankings
             }
             else
             {
-                DataContext = new PlayerViewModel();
+                DataContext = new PlayerDataVM();
                 isNew = true;
                 PlayerScore.Text = DefaultScore;
                 ((ApplicationBarIconButton)ApplicationBar.Buttons[1]).IsEnabled = false;
@@ -47,7 +47,7 @@ namespace MTGTournamentRankings
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (ApplicationBar.Buttons[0] == null) { return; }
-            PlayerViewModel player = DataContext as PlayerViewModel;
+            PlayerDataVM player = DataContext as PlayerDataVM;
             if (player == null) { return; }
 
             int testIfNumeric;
@@ -71,7 +71,7 @@ namespace MTGTournamentRankings
 
         private void SavePlayer_Click(object sender, EventArgs e)
         {
-            PlayerViewModel player = DataContext as PlayerViewModel;
+            PlayerDataVM player = DataContext as PlayerDataVM;
             if (player == null) { return; }
 
             player.LineOne = PlayerName.Text;
@@ -82,12 +82,13 @@ namespace MTGTournamentRankings
                 App.PlayersViewModel.Items.Add(player);
             }
 
+            App.PlayersViewModel.SaveData();
             NavigationService.GoBack();
         }
 
         private void DeletePlayer_Click(object sender, EventArgs e)
         {
-            PlayerViewModel player = DataContext as PlayerViewModel;
+            PlayerDataVM player = DataContext as PlayerDataVM;
             if (player == null) { return; }
 
             string msg = String.Format("Are you sure you want to permanently delete {0}?", player.LineOne);
@@ -99,6 +100,7 @@ namespace MTGTournamentRankings
 
             if (App.PlayersViewModel.Items.Remove(player))
             {
+                App.PlayersViewModel.SaveData();
                 NavigationService.GoBack();
             }
             else

@@ -13,7 +13,7 @@ using System.Windows.Shapes;
 
 namespace MTGTournamentRankings
 {
-    public class PlayerViewModel : INotifyPropertyChanged
+    public class PlayerDataVM : INotifyPropertyChanged
     {
         private string _lineOne;
         /// <summary>

@@ -39,7 +39,7 @@ namespace MTGTournamentRankings
             MainListBox.SelectedIndex = -1;
         }
 
-        // Load data for the PlayersViewModel Items
+        // Load data for the PlayersVM Items
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             if (!App.PlayersViewModel.IsDataLoaded)
