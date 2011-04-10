@@ -47,5 +47,10 @@ namespace MTGTournamentRankings
                 App.PlayersViewModel.LoadData();
             }
         }
+
+        private void ButtonAddPlayer_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/PlayerDetailsPage.xaml", UriKind.Relative));
+        }
     }
 }

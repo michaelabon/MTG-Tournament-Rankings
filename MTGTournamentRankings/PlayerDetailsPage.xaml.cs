@@ -23,13 +23,25 @@ namespace MTGTournamentRankings
             InitializeComponent();
         }
 
+        private const string DefaultScore = "1600";
+        private bool isNew;
         // When page is navigated to set data context to selected item in list
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             string selectedIndex = "";
-            if (!NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex)) { return; }
-            int index = int.Parse(selectedIndex);
-            DataContext = App.PlayersViewModel.Items[index];
+            NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex);
+            int index;
+            if (int.TryParse(selectedIndex, out index))
+            {
+                DataContext = App.PlayersViewModel.Items[index];
+            }
+            else
+            {
+                DataContext = new PlayerViewModel();
+                isNew = true;
+                PlayerScore.Text = DefaultScore;
+                ((ApplicationBarIconButton)ApplicationBar.Buttons[1]).IsEnabled = false;
+            }
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -64,6 +76,13 @@ namespace MTGTournamentRankings
 
             player.LineOne = PlayerName.Text;
             player.LineTwo = PlayerScore.Text;
+            
+            if (isNew)
+            {
+                App.PlayersViewModel.Items.Add(player);
+            }
+
+            NavigationService.GoBack();
         }
 
         private void DeletePlayer_Click(object sender, EventArgs e)
