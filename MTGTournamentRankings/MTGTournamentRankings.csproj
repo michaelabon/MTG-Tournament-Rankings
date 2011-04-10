@@ -72,8 +72,8 @@
       <DependentUpon>PlayersPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\PlayerViewModel.cs" />
-    <Compile Include="ViewModels\PlayersViewModel.cs" />
+    <Compile Include="ViewModels\PlayerDataVM.cs" />
+    <Compile Include="ViewModels\PlayersVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
