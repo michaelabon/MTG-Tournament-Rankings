@@ -14,10 +14,10 @@ using Microsoft.Phone.Controls;
 
 namespace MTGTournamentRankings
 {
-    public partial class DetailsPage : PhoneApplicationPage
+    public partial class PlayerDetailsPage : PhoneApplicationPage
     {
         // Constructor
-        public DetailsPage()
+        public PlayerDetailsPage()
         {
             InitializeComponent();
         }
