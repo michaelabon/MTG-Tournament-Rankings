@@ -17,19 +17,19 @@ namespace MTGTournamentRankings
 {
     public partial class App : Application
     {
-        private static PlayersViewModel viewModel = null;
+        private static PlayersVM viewModel = null;
 
         /// <summary>
         /// A static ViewModel used by the views to bind against.
         /// </summary>
-        /// <returns>The PlayersViewModel object.</returns>
-        public static PlayersViewModel PlayersViewModel
+        /// <returns>The PlayersVM object.</returns>
+        public static PlayersVM PlayersViewModel
         {
             get
             {
                 // Delay creation of the view model until necessary
                 if (viewModel == null)
-                    viewModel = new PlayersViewModel();
+                    viewModel = new PlayersVM();
 
                 return viewModel;
             }
@@ -53,7 +53,7 @@ namespace MTGTournamentRankings
             if (System.Diagnostics.Debugger.IsAttached)
             {
                 // Display the current frame rate counters.
-                Application.Current.Host.Settings.EnableFrameRateCounter = true;
+                //Application.Current.Host.Settings.EnableFrameRateCounter = true;
 
                 // Show the areas of the app that are being redrawn in each frame.
                 //Application.Current.Host.Settings.EnableRedrawRegions = true;
